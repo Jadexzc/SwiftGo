@@ -1,0 +1,70 @@
+{
+  "baguio": {
+    "title": "Baguio City",
+    "desc": "The Summer Capital of the Philippines, offering cool breezes and pine-scented air.",
+    "places": [
+      { "name": "Burnham Park", "img": "assets/images/burnham.jpg", "text": "Historic public park featuring Burnham Lake and gardens." },
+      { "name": "Mount Pulag", "img": "assets/images/mount-pulag.jpg", "text": "Famous for its 'sea of clouds' and majestic trails." },
+      { "name": "Igorot Stone Kingdom", "img": "assets/images/stone-kingdom.jpg", "text": "A massive rock-walled castle celebrating local heritage." },
+      { "name": "Baguio Night Market", "img": "assets/images/baguio-market.jpg", "text": "The go-to place for street food and affordable finds." }
+    ]
+  },
+  "zambales": {
+    "title": "Zambales",
+    "desc": "A coastal paradise perfect for beach camping and mountain trekking.",
+    "places": [
+      { "name": "Anawangin Cove", "img": "assets/images/img6.jpg", "text": "Unique ash-gray sand beach surrounded by pine trees." },
+      { "name": "Capones Island", "img": "assets/images/img7.jpg", "text": "Home to a historic Spanish-era lighthouse." },
+      { "name": "Mount Pinatubo", "img": "assets/images/img8.jpg", "text": "A world-famous trek leading to a turquoise crater lake." }
+    ]
+  },
+  "manila": {
+    "title": "Manila",
+    "desc": "The historical and modern heart of the Philippines.",
+    "places": [
+      { "name": "Intramuros", "img": "assets/images/intramuros.jpg", "text": "The iconic Walled City of the Spanish era." },
+      { "name": "National Museum", "img": "assets/images/museum.jpg", "text": "The treasure house of Philippine art and history." },
+      { "name": "Manila Bay", "img": "assets/images/manila-bay.jpg", "text": "Famous for the most beautiful sunsets in the country." }
+    ]
+  },
+  "launion": {
+    "title": "La Union",
+    "desc": "The Surfing Capital of the North with a vibrant, laid-back vibe.",
+    "places": [
+      { "name": "San Juan Beach", "img": "assets/images/san-juan.jpg", "text": "The primary destination for surfers and beach lovers." },
+      { "name": "Ma-Cho Temple", "img": "assets/images/macho-temple.jpg", "text": "A towering Taoist temple with a view of the sea." }
+    ]
+  },
+  "ilocosnorte": {
+    "title": "Ilocos Norte",
+    "desc": "Land of massive sand dunes and historic stone churches.",
+    "places": [
+      { "name": "Paoay Church", "img": "assets/images/paoay-church.jpg", "text": "A UNESCO World Heritage site known for its buttresses." },
+      { "name": "Bangui Windmills", "img": "assets/images/bangui-windmills.jpg", "text": "Giant turbines providing clean energy along the coast." }
+    ]
+  },
+  "pangasinan": {
+    "title": "Pangasinan",
+    "desc": "Home of the Hundred Islands and crystal clear waters.",
+    "places": [
+      { "name": "Hundred Islands", "img": "assets/images/hundred-islands.jpg", "text": "A national park featuring mushroom-shaped islands." },
+      { "name": "Patar Beach", "img": "assets/images/patar-beach.jpg", "text": "Golden sand beach in Bolinao with pristine waters." }
+    ]
+  },
+  "tagaytay": {
+    "title": "Tagaytay",
+    "desc": "A city overlooking the world's smallest active volcano.",
+    "places": [
+      { "name": "Taal View Deck", "img": "assets/images/taal-lake.jpg", "text": "Enjoy the iconic view of Taal Lake and Volcano." },
+      { "name": "Skyranch", "img": "assets/images/sky-ranch.jpg", "text": "Theme park featuring the giant Sky Eye ferris wheel." }
+    ]
+  },
+  "bulacan": {
+    "title": "Bulacan",
+    "desc": "The Cradle of Heroes and site of the First Philippine Republic.",
+    "places": [
+      { "name": "Barasoain Church", "img": "assets/images/barasoain.jpg", "text": "Site of the first constitutional convention in Asia." },
+      { "name": "Philippine Arena", "img": "assets/images/arena.jpg", "text": "The largest indoor arena in the world." }
+    ]
+  }
+}

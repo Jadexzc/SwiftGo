@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Swift Go | Plan Your Escape</title>
+    <link rel="icon" type="image/png" href="assets/images/logo.png">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg fixed-top modern-nav">
+    <div class="container">
+        <a class="navbar-brand d-flex align-items-center" href="index.html">
+            <img src="assets/images/logo.png" alt="Swift Go Logo" class="nav-logo me-2">
+            <span class="brand-text">Swift <span class="text-yellow">Go</span></span>
+        </a>
+        
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="#gallery">Destinations</a></li>
+                <li class="nav-item">
+                    <a class="nav-link nav-list-link" href="favorites.html">
+                        My List
+                        <span id="nav-fav-count" class="badge-notification">0</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<header class="d-flex align-items-center justify-content-center">
+    <div class="container text-center">
+        <h1 class="display-2 fw-bold text-uppercase animate__animated animate__fadeInDown typing-effect">
+            Plan Your Swift Escape
+        </h1>
+        <p class="tagline mb-5 animate__animated animate__fadeInUp animate__delay-1s">
+            <i class="fas fa-map-marker-alt me-2 text-warning"></i>Discover the Beauty of the Islands
+        </p>
+
+        <div class="row justify-content-center">
+            <div class="col-11 col-md-7 col-lg-5">
+                <div class="search-container animate__animated animate__zoomIn animate__delay-1s">
+                    <i class="fas fa-search search-icon"></i>
+                    <input type="text" id="searchInput" placeholder="Search your next adventure...">
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<main class="container py-5">
+    <div class="row g-4" id="gallery">
+        
+        <div class="col-12 col-md-6 col-lg-4 gallery-item" data-name="baguio" data-aos="fade-up">
+            <div class="gallery-card">
+                <button class="card-save-btn" onclick="saveToFavorites('Baguio', 'assets/images/baguio.png', this)" data-name="Baguio">
+                    <i class="far fa-heart"></i>
+                </button>
+                <a href="details.html?region=baguio">
+                    <img src="assets/images/baguio.png" alt="Baguio" loading="lazy">
+                    <div class="card-overlay">
+                        <h2><i class="fas fa-cloud-sun me-2"></i>BAGUIO</h2>
+                        <span class="explore-btn">Explore <i class="fas fa-arrow-right ms-1"></i></span>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <div class="col-12 col-md-6 col-lg-4 gallery-item" data-name="manila" data-aos="fade-up" data-aos-delay="100">
+            <div class="gallery-card">
+                <button class="card-save-btn" onclick="saveToFavorites('Manila', 'assets/images/manila.png', this)" data-name="Manila">
+                    <i class="far fa-heart"></i>
+                </button>
+                <a href="details.html?region=manila">
+                    <img src="assets/images/manila.png" alt="Manila" loading="lazy">
+                    <div class="card-overlay">
+                        <h2><i class="fas fa-city me-2"></i>MANILA</h2>
+                        <span class="explore-btn">Explore <i class="fas fa-arrow-right ms-1"></i></span>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <div class="col-12 col-md-6 col-lg-4 gallery-item" data-name="la union" data-aos="fade-up" data-aos-delay="200">
+            <div class="gallery-card">
+                <button class="card-save-btn" onclick="saveToFavorites('La Union', 'assets/images/la-union.png', this)" data-name="La Union">
+                    <i class="far fa-heart"></i>
+                </button>
+                <a href="details.html?region=launion">
+                    <img src="assets/images/la-union.png" alt="La Union" loading="lazy">
+                    <div class="card-overlay">
+                        <h2><i class="fas fa-water me-2"></i>LA UNION</h2>
+                        <span class="explore-btn">Explore <i class="fas fa-arrow-right ms-1"></i></span>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <div class="col-12 col-md-6 col-lg-4 gallery-item" data-name="ilocos norte" data-aos="fade-up">
+            <div class="gallery-card">
+                <button class="card-save-btn" onclick="saveToFavorites('Ilocos Norte', 'assets/images/ilocos-norte.jpg', this)" data-name="Ilocos Norte">
+                    <i class="far fa-heart"></i>
+                </button>
+                <a href="details.html?region=ilocosnorte">
+                    <img src="assets/images/ilocos-norte.jpg" alt="Ilocos Norte" loading="lazy">
+                    <div class="card-overlay">
+                        <h2><i class="fas fa-monument me-2"></i>ILOCOS NORTE</h2>
+                        <span class="explore-btn">Explore <i class="fas fa-arrow-right ms-1"></i></span>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <div class="col-12 col-md-6 col-lg-4 gallery-item" data-name="pangasinan" data-aos="fade-up" data-aos-delay="100">
+            <div class="gallery-card">
+                <button class="card-save-btn" onclick="saveToFavorites('Pangasinan', 'assets/images/pangasinan.jpg', this)" data-name="Pangasinan">
+                    <i class="far fa-heart"></i>
+                </button>
+                <a href="details.html?region=pangasinan">
+                    <img src="assets/images/pangasinan.jpg" alt="Pangasinan" loading="lazy">
+                    <div class="card-overlay">
+                        <h2><i class="fas fa-fish me-2"></i>PANGASINAN</h2>
+                        <span class="explore-btn">Explore <i class="fas fa-arrow-right ms-1"></i></span>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <div class="col-12 col-md-6 col-lg-4 gallery-item" data-name="tagaytay" data-aos="fade-up" data-aos-delay="200">
+            <div class="gallery-card">
+                <button class="card-save-btn" onclick="saveToFavorites('Tagaytay', 'assets/images/tagaytay.png', this)" data-name="Tagaytay">
+                    <i class="far fa-heart"></i>
+                </button>
+                <a href="details.html?region=tagaytay">
+                    <img src="assets/images/tagaytay.png" alt="Tagaytay" loading="lazy">
+                    <div class="card-overlay">
+                        <h2><i class="fas fa-mountain me-2"></i>TAGAYTAY</h2>
+                        <span class="explore-btn">Explore <i class="fas fa-arrow-right ms-1"></i></span>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <div class="col-12 col-md-6 col-lg-4 gallery-item" data-name="bulacan" data-aos="fade-up">
+            <div class="gallery-card">
+                <button class="card-save-btn" onclick="saveToFavorites('Bulacan', 'assets/images/bulacan.png', this)" data-name="Bulacan">
+                    <i class="far fa-heart"></i>
+                </button>
+                <a href="details.html?region=bulacan">
+                    <img src="assets/images/bulacan.png" alt="Bulacan" loading="lazy">
+                    <div class="card-overlay">
+                        <h2><i class="fas fa-church me-2"></i>BULACAN</h2>
+                        <span class="explore-btn">Explore <i class="fas fa-arrow-right ms-1"></i></span>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+    </div>
+</main>
+
+<footer class="py-4 text-center border-top bg-white">
+    <p class="text-muted mb-0">&copy; 2026 Swift Go Travel. All rights reserved.</p>
+</footer>
+
+<button id="backToTop" title="Go to top"><i class="fas fa-arrow-up"></i></button>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script src="assets/js/index.js"></script>
+</body>
+</html>

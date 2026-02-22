@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Bucket List | Swift Go</title>
+    
+    <link rel="icon" type="image/png" href="assets/images/logo.png">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <link rel="stylesheet" href="/assets/css/favorites.css">
+</head>
+<body class="bg-light">
+
+    <nav class="details-nav shadow-sm sticky-top">
+        <div class="container d-flex justify-content-between align-items-center">
+            <a href="index.html" class="btn btn-outline-light rounded-pill px-4 btn-sm">
+                <i class="fas fa-chevron-left me-2"></i> Back to Gallery
+            </a>
+            <div class="d-flex align-items-center gap-3">
+                <span class="badge rounded-pill bg-danger shadow-sm" id="fav-count">0</span>
+                <img src="assets/images/logo.png" alt="Logo" class="logo-circle" style="height: 40px; background: white; border-radius: 50%; padding: 4px;">
+            </div>
+        </div>
+    </nav>
+
+    <header class="page-header text-center py-5 mb-5" style="background: linear-gradient(rgba(0,56,168,0.7), rgba(0,56,168,0.7)), url('https://images.unsplash.com/photo-1518509562904-e7ef99cdcc86?auto=format&fit=crop&w=1300&q=80'); background-size: cover; background-position: center; color: white;">
+        <div class="container animate__animated animate__fadeIn">
+            <h1 class="display-4 fw-bold">My Saved Gems</h1>
+            <p class="lead text-white-50">Handpicked destinations for your next Philippine adventure.</p>
+        </div>
+    </header>
+
+<div class="container mb-3">
+    <div class="d-flex justify-content-between align-items-end">
+        <h2 class="fw-bold text-dark m-0">Saved Destinations</h2>
+        <button id="clear-all-btn" class="btn btn-clear-all" onclick="clearAllFavorites()">
+            <i class="fas fa-trash-sweep me-2"></i>Clear List
+        </button>
+    </div>
+    <hr class="mt-2 mb-4 opacity-10">
+</div>
+
+    <main class="container mb-5">
+        <div id="favorites-container" class="row g-4 justify-content-center">
+            <div class="text-center py-5">
+                <div class="spinner-border text-primary" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="container text-center py-4 border-top">
+        <p class="text-muted small">&copy; 2026 Swift Go. Plan, Travel, Repeat.</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    
+    <script src="assets/js/favorites.js"></script>
+    
+    <script>
+        AOS.init();
+    </script>
+</body>
+</html>
