@@ -2,69 +2,77 @@
   "baguio": {
     "title": "Baguio City",
     "desc": "The Summer Capital of the Philippines, offering cool breezes and pine-scented air.",
+    "bookingFee": 150,
     "places": [
-      { "name": "Burnham Park", "img": "assets/images/burnham.jpg", "text": "Historic public park featuring Burnham Lake and gardens." },
-      { "name": "Mount Pulag", "img": "assets/images/mount-pulag.jpg", "text": "Famous for its 'sea of clouds' and majestic trails." },
-      { "name": "Igorot Stone Kingdom", "img": "assets/images/stone-kingdom.jpg", "text": "A massive rock-walled castle celebrating local heritage." },
-      { "name": "Baguio Night Market", "img": "assets/images/baguio-market.jpg", "text": "The go-to place for street food and affordable finds." }
+      { "name": "Burnham Park", "price": 100, "img": "assets/images/burnham.jpg", "text": "Historic public park featuring Burnham Lake and gardens." },
+      { "name": "Mount Pulag", "price": 1500, "img": "assets/images/mount-pulag.jpg", "text": "Famous for its 'sea of clouds' and majestic trails." },
+      { "name": "Igorot Stone Kingdom", "price": 100, "img": "assets/images/stone-kingdom.jpg", "text": "A massive rock-walled castle celebrating local heritage." },
+      { "name": "Baguio Night Market", "price": 50, "img": "assets/images/baguio-market.jpg", "text": "The go-to place for street food and affordable finds." }
     ]
   },
   "zambales": {
     "title": "Zambales",
     "desc": "A coastal paradise perfect for beach camping and mountain trekking.",
+    "bookingFee": 200,
     "places": [
-      { "name": "Anawangin Cove", "img": "assets/images/img6.jpg", "text": "Unique ash-gray sand beach surrounded by pine trees." },
-      { "name": "Capones Island", "img": "assets/images/img7.jpg", "text": "Home to a historic Spanish-era lighthouse." },
-      { "name": "Mount Pinatubo", "img": "assets/images/img8.jpg", "text": "A world-famous trek leading to a turquoise crater lake." }
+      { "name": "Anawangin Cove", "price": 500, "img": "assets/images/img6.jpg", "text": "Unique ash-gray sand beach surrounded by pine trees." },
+      { "name": "Capones Island", "price": 350, "img": "assets/images/img7.jpg", "text": "Home to a historic Spanish-era lighthouse." },
+      { "name": "Mount Pinatubo", "price": 2500, "img": "assets/images/img8.jpg", "text": "A world-famous trek leading to a turquoise crater lake." }
     ]
   },
   "manila": {
     "title": "Manila",
     "desc": "The historical and modern heart of the Philippines.",
+    "bookingFee": 100,
     "places": [
-      { "name": "Intramuros", "img": "assets/images/intramuros.jpg", "text": "The iconic Walled City of the Spanish era." },
-      { "name": "National Museum", "img": "assets/images/museum.jpg", "text": "The treasure house of Philippine art and history." },
-      { "name": "Manila Bay", "img": "assets/images/manila-bay.jpg", "text": "Famous for the most beautiful sunsets in the country." }
+      { "name": "Intramuros", "price": 75, "img": "assets/images/intramuros.jpg", "text": "The iconic Walled City of the Spanish era." },
+      { "name": "National Museum", "price": 0, "img": "assets/images/museum.jpg", "text": "The treasure house of Philippine art and history." },
+      { "name": "Manila Bay", "price": 150, "img": "assets/images/manila-bay.jpg", "text": "Famous for the most beautiful sunsets in the country." }
     ]
   },
   "launion": {
     "title": "La Union",
     "desc": "The Surfing Capital of the North with a vibrant, laid-back vibe.",
+    "bookingFee": 150,
     "places": [
-      { "name": "San Juan Beach", "img": "assets/images/san-juan.jpg", "text": "The primary destination for surfers and beach lovers." },
-      { "name": "Ma-Cho Temple", "img": "assets/images/macho-temple.jpg", "text": "A towering Taoist temple with a view of the sea." }
+      { "name": "San Juan Beach", "price": 500, "img": "assets/images/san-juan.jpg", "text": "The primary destination for surfers and beach lovers." },
+      { "name": "Ma-Cho Temple", "price": 20, "img": "assets/images/macho-temple.jpg", "text": "A towering Taoist temple with a view of the sea." }
     ]
   },
   "ilocosnorte": {
     "title": "Ilocos Norte",
     "desc": "Land of massive sand dunes and historic stone churches.",
+    "bookingFee": 200,
     "places": [
-      { "name": "Paoay Church", "img": "assets/images/paoay-church.jpg", "text": "A UNESCO World Heritage site known for its buttresses." },
-      { "name": "Bangui Windmills", "img": "assets/images/bangui-windmills.jpg", "text": "Giant turbines providing clean energy along the coast." }
+      { "name": "Paoay Church", "price": 0, "img": "assets/images/paoay-church.jpg", "text": "A UNESCO World Heritage site known for its buttresses." },
+      { "name": "Bangui Windmills", "price": 0, "img": "assets/images/bangui-windmills.jpg", "text": "Giant turbines providing clean energy along the coast." }
     ]
   },
   "pangasinan": {
     "title": "Pangasinan",
     "desc": "Home of the Hundred Islands and crystal clear waters.",
+    "bookingFee": 150,
     "places": [
-      { "name": "Hundred Islands", "img": "assets/images/hundred-islands.jpg", "text": "A national park featuring mushroom-shaped islands." },
-      { "name": "Patar Beach", "img": "assets/images/patar-beach.jpg", "text": "Golden sand beach in Bolinao with pristine waters." }
+      { "name": "Hundred Islands", "price": 800, "img": "assets/images/hundred-islands.jpg", "text": "A national park featuring mushroom-shaped islands." },
+      { "name": "Patar Beach", "price": 100, "img": "assets/images/patar-beach.jpg", "text": "Golden sand beach in Bolinao with pristine waters." }
     ]
   },
   "tagaytay": {
     "title": "Tagaytay",
     "desc": "A city overlooking the world's smallest active volcano.",
+    "bookingFee": 100,
     "places": [
-      { "name": "Taal View Deck", "img": "assets/images/taal-lake.jpg", "text": "Enjoy the iconic view of Taal Lake and Volcano." },
-      { "name": "Skyranch", "img": "assets/images/sky-ranch.jpg", "text": "Theme park featuring the giant Sky Eye ferris wheel." }
+      { "name": "Taal View Deck", "price": 50, "img": "assets/images/taal-lake.jpg", "text": "Enjoy the iconic view of Taal Lake and Volcano." },
+      { "name": "Skyranch", "price": 100, "img": "assets/images/sky-ranch.jpg", "text": "Theme park featuring the giant Sky Eye ferris wheel." }
     ]
   },
   "bulacan": {
     "title": "Bulacan",
     "desc": "The Cradle of Heroes and site of the First Philippine Republic.",
+    "bookingFee": 100,
     "places": [
-      { "name": "Barasoain Church", "img": "assets/images/barasoain.jpg", "text": "Site of the first constitutional convention in Asia." },
-      { "name": "Philippine Arena", "img": "assets/images/arena.jpg", "text": "The largest indoor arena in the world." }
+      { "name": "Barasoain Church", "price": 0, "img": "assets/images/barasoain.jpg", "text": "Site of the first constitutional convention in Asia." },
+      { "name": "Philippine Arena", "price": 500, "img": "assets/images/arena.jpg", "text": "The largest indoor arena in the world." }
     ]
   }
 }

@@ -1,10 +1,11 @@
 /* --- Global & Variables --- */
 :root {
     --ph-blue: #0038A8;
-    --ph-red: #CE1126;
+    --ph-red: #ff4757;
     --ph-yellow: #FCD116;
-    --bg-light: #f8f9fa;
+    --bg-light: #f1f3f6;
     --shadow-soft: 0 10px 30px rgba(0, 0, 0, 0.08);
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 body {
@@ -14,190 +15,282 @@ body {
     overflow-x: hidden;
 }
 
-/* --- Navigation & Logo --- */
+/* --- Navigation --- */
 .details-nav {
     background-color: var(--ph-blue);
-    padding: 12px 0;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
+    padding: 15px 0;
     border-bottom: 4px solid var(--ph-yellow);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
 
-/* THE LOGO FIX: Removing white backgrounds */
 .logo-circle {
-    background: transparent !important;
-    display: inline-flex;
-    align-items: center;
-    padding: 0;
-    border: none;
+    transition: transform 0.3s ease;
 }
 
-.logo-circle img {
-    height: 50px;
-    width: auto;
-    background: transparent !important;
-    mix-blend-mode: normal; /* No longer need multiply if img is transparent */
+.logo-circle:hover {
+    transform: rotate(-10deg) scale(1.1);
 }
 
-/* --- Weather Card --- */
-.weather-card {
-    background: linear-gradient(135deg, var(--ph-blue), #002a7a);
-    color: white;
-    border-radius: 20px;
-    padding: 25px;
-    margin-bottom: 40px;
-    box-shadow: 0 10px 30px rgba(0, 56, 168, 0.2);
-    display: none; /* Shown via JS */
+/* --- Header Section --- */
+.page-header {
+    position: relative;
+    border-radius: 0 0 50px 50px;
+    margin-bottom: 3rem;
+    overflow: hidden;
 }
 
-/* --- Grid & Cards --- */
-.place-item {
+.page-header h1 {
+    font-family: 'Playfair Display', serif;
+    letter-spacing: -1px;
+}
+
+/* --- Gallery Cards --- */
+.gallery-card {
     background: white;
-    border-radius: 15px;
+    border-radius: 24px;
     overflow: hidden;
     height: 100%;
     display: flex;
     flex-direction: column;
-    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s ease;
-    border: none;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    transition: var(--transition);
+    border: 1px solid rgba(0,0,0,0.05);
+    box-shadow: var(--shadow-soft);
 }
 
-.place-item:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 12px 25px rgba(0,0,0,0.1);
+.gallery-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0, 56, 168, 0.12);
 }
 
-/* --- Image Handling (Fixed disappearing bug) --- */
+/* Image Handling */
 .image-wrapper {
     position: relative;
     width: 100%;
-    height: 250px; /* Crucial: Fixed height */
+    height: 240px;
     overflow: hidden;
-    flex-shrink: 0; /* Prevents text from squishing the image */
-    cursor: zoom-in;
-    background-color: #e9ecef;
 }
 
-.place-image {
+.image-wrapper img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    display: block;
-    transition: transform 0.5s ease;
+    transition: transform 0.8s ease;
 }
 
-.place-item:hover .place-image {
+.gallery-card:hover .image-wrapper img {
     transform: scale(1.1);
 }
 
-/* View Overlay on Hover */
-.view-overlay {
-    position: absolute;
-    top: 0; left: 0; width: 100%; height: 100%;
-    background: rgba(0, 56, 168, 0.3);
-    color: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-    font-size: 1.5rem;
-}
-
-.image-wrapper:hover .view-overlay {
-    opacity: 1;
-}
-
-/* --- Content & Buttons --- */
-.place-info-content {
+/* --- Card Content --- */
+.card-body-content {
     padding: 20px;
+    flex-grow: 1;
     display: flex;
     flex-direction: column;
-    flex-grow: 1;
 }
 
-.place-info-content h3 {
+.card-body-content h3 {
     font-family: 'Playfair Display', serif;
     font-weight: 700;
     color: var(--ph-blue);
-    margin-bottom: 10px;
+    margin-bottom: 15px;
 }
 
-.button-group {
+/* --- Pricing Breakdown --- */
+.price-breakdown {
+    background: #f8f9fa;
+    padding: 15px;
+    border-radius: 15px;
+    border-left: 4px solid #27ae60;
+    margin-bottom: 15px;
+}
+
+.price-row {
     display: flex;
-    gap: 10px;
-    margin-top: auto; /* Pushes buttons to the very bottom */
-    padding-top: 15px;
-}
-
-.btn-modern {
-    flex: 1;
-    border-radius: 50px;
-    font-weight: 600;
+    justify-content: space-between;
     font-size: 0.85rem;
-    padding: 10px;
-    transition: 0.3s;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-}
-
-/* --- Clear All Button (Bucket List Page) --- */
-.btn-clear-all {
     color: #636e72;
-    background: #eee;
+    margin-bottom: 4px;
+}
+
+.price-row.total {
+    margin-top: 8px;
+    padding-top: 8px;
+    border-top: 1px dashed #dfe6e9;
+    font-weight: 800;
+    font-size: 1.1rem;
+    color: #27ae60;
+}
+
+/* --- Trash Button & Animation --- */
+.remove-btn {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: white;
+    color: var(--ph-red);
     border: none;
-    padding: 10px 22px;
-    font-size: 0.85rem;
-    font-weight: 600;
-    border-radius: 50px;
-    transition: all 0.3s ease;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
     display: flex;
     align-items: center;
-    gap: 8px;
-}
-
-.btn-clear-all:hover {
-    background-color: var(--ph-red);
-    color: white;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(206, 17, 38, 0.2);
-}
-
-.empty-list-hidden {
-    display: none !important;
-}
-
-/* --- Lightbox / Modal --- */
-.lightbox-overlay {
-    display: none;
-    position: fixed;
-    z-index: 9999;
-    top: 0; left: 0; width: 100%; height: 100%;
-    background-color: rgba(0, 0, 0, 0.9);
-    backdrop-filter: blur(8px);
     justify-content: center;
+    cursor: pointer;
+    z-index: 10;
+    transition: var(--transition);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.remove-btn:hover {
+    background: var(--ph-red);
+    color: white;
+    transform: scale(1.1);
+}
+
+.remove-btn:hover i {
+    animation: simpleWiggle 0.3s ease-in-out;
+}
+
+/* Professional Fade Out for Logic Removal */
+.card-fade-out {
+    opacity: 0;
+    transform: scale(0.9) translateY(10px);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+    pointer-events: none;
+}
+
+@keyframes simpleWiggle {
+    0%, 100% { transform: rotate(0); }
+    25% { transform: rotate(-15deg); }
+    75% { transform: rotate(15deg); }
+}
+
+/* --- Checkout/Grand Total Section --- */
+.total-summary-card {
+    background: linear-gradient(135deg, #ffffff, #f1f6ff);
+    border-radius: 30px;
+    border: 2px solid var(--ph-blue);
+    padding: 40px;
+    margin-top: 40px;
+    box-shadow: 0 20px 50px rgba(0, 56, 168, 0.1);
+}
+
+.grand-total-label {
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #636e72;
+    font-weight: 700;
+    font-size: 0.9rem;
+}
+
+.grand-total-price {
+    color: var(--ph-blue);
+    font-size: 3rem;
+    font-weight: 900;
+}
+
+/* --- Buttons --- */
+.btn-book-all {
+    background: var(--ph-blue);
+    color: white;
+    border: none;
+    padding: 18px 50px;
+    font-size: 1.2rem;
+    font-weight: 700;
+    border-radius: 100px;
+    transition: var(--transition);
+    display: inline-block;
+    text-decoration: none;
+    text-align: center;
+}
+
+.btn-book-all:hover {
+    background: var(--ph-yellow);
+    color: var(--ph-blue);
+    box-shadow: 0 10px 25px rgba(252, 209, 22, 0.4);
+    transform: translateY(-3px);
+}
+
+/* --- Empty State --- */
+.empty-state-container {
+    padding: 80px 40px;
+    background: #ffffff;
+    border-radius: 40px;
+    border: 3px dashed #dfe6e9;
+    text-align: center;
+}
+
+.broken-heart-wrapper i {
+    color: #dfe6e9;
+    font-size: 6rem;
+    margin-bottom: 25px;
+    display: inline-block;
+    animation: heartFloat 3s ease-in-out infinite;
+}
+
+@keyframes heartFloat {
+    0%, 100% { transform: translateY(0) rotate(0); }
+    50% { transform: translateY(-20px) rotate(-8deg); }
+}
+
+/* --- Modal & Guest Polish --- */
+.modal-content {
+    border-radius: 30px;
+    overflow: hidden;
+}
+
+#checkoutModal .modal-header {
+    background-color: var(--ph-blue) !important;
+    color: #ffffff !important;
+    border-bottom: 4px solid var(--ph-yellow);
+}
+
+#checkoutModal .modal-title {
+    color: #ffffff !important;
+}
+
+#checkoutModal .btn-close {
+    filter: invert(1) grayscale(100%) brightness(200%);
+}
+
+.price-summary-box {
+    background: #f1f3f6;
+    border-left: 5px solid var(--ph-blue) !important;
+    padding: 15px;
+    border-radius: 10px;
+}
+
+.counter-btn {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 1px solid var(--ph-blue);
+    background: white;
+    color: var(--ph-blue);
+    display: flex;
     align-items: center;
-    flex-direction: column;
+    justify-content: center;
+    transition: var(--transition);
 }
 
-.lightbox-content {
-    max-width: 90%;
-    max-height: 80%;
-    border-radius: 12px;
-    box-shadow: 0 0 30px rgba(0,0,0,0.5);
-    animation: zoomIn 0.3s ease;
+.counter-btn:hover {
+    background: var(--ph-blue);
+    color: white;
 }
 
-@keyframes zoomIn {
-    from { transform: scale(0.9); opacity: 0; }
-    to { transform: scale(1); opacity: 1; }
-}
-
-/* --- Toast --- */
-.toast {
-    border-radius: 12px;
-    font-weight: 500;
+/* --- Responsive Adjustments --- */
+@media (max-width: 576px) {
+    .grand-total-price {
+        font-size: 2rem;
+    }
+    .btn-book-all {
+        width: 100%;
+        padding: 15px;
+    }
+    .total-summary-card {
+        padding: 25px;
+    }
+    .empty-state-container {
+        padding: 40px 20px;
+    }
 }

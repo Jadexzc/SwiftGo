@@ -6,13 +6,31 @@
     <title>My Bucket List | Swift Go</title>
     
     <link rel="icon" type="image/png" href="assets/images/logo.png">
-
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     
-    <link rel="stylesheet" href="/assets/css/favorites.css">
+    <link rel="stylesheet" href="assets/css/favorites.css">
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        .counter-btn {
+            width: 32px; height: 32px;
+            border-radius: 50%;
+            border: 1px solid #0038A8;
+            background: white;
+            color: #0038A8;
+            display: flex; align-items: center; justify-content: center;
+            cursor: pointer;
+        }
+        .counter-btn:hover { background: #0038A8; color: white; }
+        
+        .sched-btn-group .btn-check:checked + .btn {
+            background-color: #0038A8 !important;
+            color: white !important;
+        }
+    </style>
 </head>
 <body class="bg-light">
 
@@ -23,7 +41,7 @@
             </a>
             <div class="d-flex align-items-center gap-3">
                 <span class="badge rounded-pill bg-danger shadow-sm" id="fav-count">0</span>
-                <img src="assets/images/logo.png" alt="Logo" class="logo-circle" style="height: 40px; background: white; border-radius: 50%; padding: 4px;">
+                <img src="assets/images/logo.png" alt="Logo" style="height: 40px; background: white; border-radius: 50%; padding: 4px;">
             </div>
         </div>
     </nav>
@@ -31,29 +49,114 @@
     <header class="page-header text-center py-5 mb-5" style="background: linear-gradient(rgba(0,56,168,0.7), rgba(0,56,168,0.7)), url('https://images.unsplash.com/photo-1518509562904-e7ef99cdcc86?auto=format&fit=crop&w=1300&q=80'); background-size: cover; background-position: center; color: white;">
         <div class="container animate__animated animate__fadeIn">
             <h1 class="display-4 fw-bold">My Saved Gems</h1>
-            <p class="lead text-white-50">Handpicked destinations for your next Philippine adventure.</p>
+            <p class="lead text-white-50">Handpicked destinations for your 2026 Philippine adventure.</p>
         </div>
     </header>
 
-<div class="container mb-3">
-    <div class="d-flex justify-content-between align-items-end">
-        <h2 class="fw-bold text-dark m-0">Saved Destinations</h2>
-        <button id="clear-all-btn" class="btn btn-clear-all" onclick="clearAllFavorites()">
-            <i class="fas fa-trash-sweep me-2"></i>Clear List
-        </button>
+    <div class="container mb-3">
+        <div class="d-flex justify-content-between align-items-center flex-wrap gap-3">
+            <h2 class="fw-bold text-dark m-0">Saved Destinations</h2>
+            <button class="btn btn-outline-danger rounded-pill px-4" onclick="clearAllFavorites()">
+                <i class="fas fa-trash-sweep me-2"></i>Clear List
+            </button>
+        </div>
+        <hr class="mt-3 mb-4 opacity-10">
     </div>
-    <hr class="mt-2 mb-4 opacity-10">
-</div>
 
     <main class="container mb-5">
-        <div id="favorites-container" class="row g-4 justify-content-center">
-            <div class="text-center py-5">
-                <div class="spinner-border text-primary" role="status">
-                    <span class="visually-hidden">Loading...</span>
+        <div id="favorites-container" class="row g-4 justify-content-center"></div>
+    </main>
+
+    <div class="modal fade" id="checkoutModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content border-0 shadow-lg">
+                <div class="modal-header bg-success text-white">
+                    <h5 class="modal-title fw-bold"><i class="fas fa-plane-departure me-2"></i>Confirm Booking</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body p-4 text-start">
+                    <p id="modalDestLabel" class="text-center fw-bold text-primary mb-3"></p>
+                    
+                    <div class="mb-4 p-3 bg-light rounded-3 text-center border">
+                        <span class="small text-muted fw-bold">TOTAL BUDGET:</span>
+                        <h4 id="modalTotalPrice" class="fw-bold text-success m-0">₱0.00</h4>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label fw-bold small">Number of Guests</label>
+                        <div class="dropdown">
+                            <button class="btn btn-outline-secondary w-100 text-start d-flex justify-content-between align-items-center rounded-3" type="button" data-bs-toggle="dropdown" data-bs-auto-close="outside">
+                                <span id="guestSummaryText">1 Adult</span>
+                                <i class="fas fa-users text-primary"></i>
+                            </button>
+                            <div class="dropdown-menu p-3 shadow-lg border-0 w-100">
+                                <div class="d-flex justify-content-between align-items-center mb-3">
+                                    <span>Adults</span>
+                                    <div class="d-flex align-items-center">
+                                        <button class="counter-btn" onclick="updateGuest('adult', -1)"><i class="fas fa-minus"></i></button>
+                                        <span class="mx-3 fw-bold" id="cnt-adult">1</span>
+                                        <button class="counter-btn" onclick="updateGuest('adult', 1)"><i class="fas fa-plus"></i></button>
+                                    </div>
+                                </div>
+                                <div class="d-flex justify-content-between align-items-center mb-3">
+                                    <span>Children</span>
+                                    <div class="d-flex align-items-center">
+                                        <button class="counter-btn" onclick="updateGuest('child', -1)"><i class="fas fa-minus"></i></button>
+                                        <span class="mx-3 fw-bold" id="cnt-child">0</span>
+                                        <button class="counter-btn" onclick="updateGuest('child', 1)"><i class="fas fa-plus"></i></button>
+                                    </div>
+                                </div>
+                                <div class="d-flex justify-content-between align-items-center mb-3">
+                                    <span>Infants</span>
+                                    <div class="d-flex align-items-center">
+                                        <button class="counter-btn" onclick="updateGuest('infant', -1)"><i class="fas fa-minus"></i></button>
+                                        <span class="mx-3 fw-bold" id="cnt-infant">0</span>
+                                        <button class="counter-btn" onclick="updateGuest('infant', 1)"><i class="fas fa-plus"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label fw-bold small">Schedule Type</label>
+                        <div class="btn-group w-100 sched-btn-group mb-2">
+                            <input type="radio" class="btn-check" name="schedOption" id="schedFixed" value="Fixed" checked onchange="handleDateTypeChange()">
+                            <label class="btn btn-outline-secondary" for="schedFixed">Fixed</label>
+                            <input type="radio" class="btn-check" name="schedOption" id="schedFlexible" value="Flexible" onchange="handleDateTypeChange()">
+                            <label class="btn btn-outline-secondary" for="schedFlexible">Flexible</label>
+                            <input type="radio" class="btn-check" name="schedOption" id="schedAnytime" value="Anytime" onchange="handleDateTypeChange()">
+                            <label class="btn btn-outline-secondary" for="schedAnytime">Anytime</label>
+                        </div>
+                        <div id="dateSelectors" class="row g-2">
+                            <div class="col-7">
+                                <label class="small text-muted" id="dateInputLabel">Select Date</label>
+                                <input type="date" id="modalTripDate" class="form-control">
+                            </div>
+                            <div class="col-5">
+                                <label class="small text-muted">Days</label>
+                                <input type="number" id="tripDuration" class="form-control" value="1" min="1">
+                            </div>
+                        </div>
+                        <p id="scheduleHint" class="small text-muted text-center mt-2 italic">We will check availability for this exact date.</p>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label small fw-bold">Full Name</label>
+                        <input type="text" id="modalName" class="form-control">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label small fw-bold">Contact Number</label>
+                        <input type="tel" id="modalContact" class="form-control">
+                    </div>
+                </div>
+                <div class="modal-footer border-0">
+                    <button type="button" class="btn btn-light rounded-pill" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" onclick="submitCheckout()" class="btn btn-success px-4 fw-bold rounded-pill">Confirm & Continue</button>
                 </div>
             </div>
         </div>
-    </main>
+    </div>
 
     <footer class="container text-center py-4 border-top">
         <p class="text-muted small">&copy; 2026 Swift Go. Plan, Travel, Repeat.</p>
@@ -61,11 +164,6 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    
     <script src="assets/js/favorites.js"></script>
-    
-    <script>
-        AOS.init();
-    </script>
 </body>
 </html>
